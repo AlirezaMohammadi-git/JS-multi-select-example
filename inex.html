@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1>You can multi select items by holding shiftKey</h1>
+
+  <main class="main-container">
+
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+
+    <div class="item">
+      <input type="checkbox">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, libero eum. Perferendis adipisci facilis nostrum
+        eaque voluptatibus eveniet. Nulla iusto autem numquam placeat nisi repudiandae dolores quasi atque voluptatibus
+        minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum at quisquam provident, placeat deleniti
+        libero modi eius expedita rerum, dolores sint quaerat, reprehenderit unde corporis fugiat dolor distinctio vel
+        velit.</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+
+
+
+
+
+
+  </main>
+
+
+  <script>
+
+    const checkboxes = document.querySelectorAll('.item input[type=checkbox]')
+    checkboxes.forEach(input => { input.addEventListener('click', handleCheck) })
+
+    let lastInput;
+    function handleCheck(event) {
+      const currentInput = this;
+      let isBetween = false;
+      if (event.shiftKey) {
+        checkboxes.forEach(input => {
+          if (input === lastInput || input === currentInput) {
+
+            if (lastInput !== currentInput) {
+              isBetween = !isBetween;
+            }
+
+          }
+          if (isBetween) { input.checked = true; }
+        })
+      }
+
+      lastInput = this;
+    }
+
+  </script>
+
+</body>
+
+</html>
